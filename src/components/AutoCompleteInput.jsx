@@ -3,8 +3,10 @@ import { Typeahead } from "react-bootstrap-typeahead"
 
 import { useLanguage } from './LanguageContext'
 
-export default function AutoCompleteInput({ id, options, placeholder }) {
+export default function AutoCompleteInput({ id, options, placeholder, onChange }) {
   const { language } = useLanguage()
+
+  if (!options) return <></>
 
   options = options.filter((x) => x[".locale"] == language).map((x) => {
     return { creature: x[".name"], uid: x[".entry"] }
@@ -17,6 +19,10 @@ export default function AutoCompleteInput({ id, options, placeholder }) {
     setValue(selected)
 
     setUid(selected[0]?.uid)
+
+    if (onChange) {
+      onChange({ target: { value: selected[0]?.uid } })
+    }
   }
 
   return (
