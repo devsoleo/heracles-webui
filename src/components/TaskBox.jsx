@@ -16,9 +16,7 @@ const taskComponents = {
 export default function TaskBox({ step }) {
   const [taskType, setTaskType] = useState("")
 
-  const handleTaskTypeChange = (value) => {
-    setTaskType(value);
-  };
+  const handleTaskTypeChange = (value) => setTaskType(value)
 
   const SelectedTaskBox = taskComponents[taskType] || null
 

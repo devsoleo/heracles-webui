@@ -1,7 +1,5 @@
 import { useState } from "react"
 import AutoCompleteInput from "../AutoCompleteInput"
-// const creatures = require("../../data/creatures-unique.json")
-const creatures = []
 
 export default function TaskBoxTarget({ step, type }) {
   const [ targetType, setTargetType ] = useState("")
@@ -21,7 +19,7 @@ export default function TaskBoxTarget({ step, type }) {
       <div className="col">
       {
         targetType == "1" && (
-          <AutoCompleteInput id={step + "-" + type + "-creature_id"} options={creatures} placeholder="Unit name" />
+          <AutoCompleteInput id={step + "-" + type + "-creature_id"} type="creature" placeholder="Unit name" />
         )
       }
       {

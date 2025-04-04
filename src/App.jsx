@@ -8,7 +8,9 @@ const App = () => {
 
     const [taskList, setTaskList] = useState([])
 
-		const handleLanguageChange = (event) => setLanguage(event.target.value)
+		const handleLanguageChange = (event) => {
+			setLanguage(event.target.value)
+		}
 
     const onAddTaskButtonClick = event => {
       setTaskList(taskList.concat(<TaskBox key={taskList.length} step={taskList.length} />))
@@ -48,9 +50,9 @@ const App = () => {
         </div>
 
         <br />
-
+				<form id="cacapipi">
         {taskList}
-
+				</form>
         <div className="container card">
             <div className="card-body">
                 <button onClick={submit} type="button" className="btn btn-primary">

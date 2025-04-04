@@ -2,10 +2,6 @@ import { useState } from "react"
 
 import AutoCompleteInput from "../AutoCompleteInput"
 
-// const zones = require("../../data/zones.json")
-// const subzones = require("../../data/subzones.json")
-const zones = []
-const subzones = []
 export default function TaskBoxGo({ step, type }) {
 
   const [selectedZone, setSelectedZone] = useState("")
@@ -15,11 +11,16 @@ export default function TaskBoxGo({ step, type }) {
   return (
     <>
       <div className="col">
-        <AutoCompleteInput onChange={handleChange} id={ step + "-" + type + "-creature_id" } options={zones} placeholder="Zone" />
+        <AutoCompleteInput id={ step + "-" + type + "-creature_id" } type="zone" placeholder="Zone" onChange={handleChange} />
       </div>
       <div className="col">
-        { selectedZone }
-        <AutoCompleteInput id={ step + "-" + type + "-creature_id" } options={subzones.filter((x) => x[".parentId"] == selectedZone)} placeholder="Subzone" />
+        <AutoCompleteInput
+          id={ step + "-" + type + "-creature_id" }
+          key={selectedZone}
+          type="subzone"
+          preload={true}
+          parentId={selectedZone}
+          placeholder="Subzone" />
       </div>
     </>
   )
