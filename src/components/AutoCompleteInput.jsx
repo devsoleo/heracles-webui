@@ -3,7 +3,7 @@ import { AsyncTypeahead } from "react-bootstrap-typeahead"
 
 import { useLanguage } from './LanguageContext'
 
-export default function AutoCompleteInput({ id, placeholder, type, onChange, preload, parentId }) {
+export default function AutoCompleteInput({ id, placeholder, category, onChange, preload, parentId }) {
   const { language } = useLanguage()
 
   const [isLoading, setIsLoading] = useState(false)
@@ -33,7 +33,7 @@ export default function AutoCompleteInput({ id, placeholder, type, onChange, pre
 
     setIsLoading(true)
 
-    fetch(`http://localhost:8080/search?type=${type}_preload&lang=${language}&parentId=${parentId}`)
+    fetch(`http://localhost:8080/api/search?category=${category}_preload&locale=${language}&parentId=${parentId}`)
       .then(resp => resp.json())
       .then(json => {
         if (json == null) return
@@ -60,11 +60,11 @@ export default function AutoCompleteInput({ id, placeholder, type, onChange, pre
         useCache={false}
         onSearch={(query) => {
           setIsLoading(true)
-          const params = new URLSearchParams({ type, query, lang: language })
+          const params = new URLSearchParams({ category, query, locale: language })
 
           if (parentId) params.append('parentId', parentId)
 
-          fetch(`http://localhost:8080/search?${params.toString()}`)
+          fetch(`http://localhost:8080/api/search?${params.toString()}`)
             .then(resp => resp.json())
             .then(json => {
               if (json == null) return
