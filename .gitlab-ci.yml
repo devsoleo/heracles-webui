@@ -1,0 +1,35 @@
+stages:
+  - build
+  - dockerize
+
+variables:
+  DOCKER_IMAGE: "$CI_REGISTRY_IMAGE:latest"
+
+cache:
+  paths:
+    - node_modules/
+
+build:
+  stage: build
+  image: node:22-alpine
+  script:
+    - npm i
+    - npm run build
+  artifacts:
+    paths:
+      - dist/
+
+dockerize:
+  stage: dockerize
+  image: docker:latest
+  services:
+    - docker:dind
+  needs:
+  - job: build
+    artifacts: true
+  before_script:
+    - echo "$CI_REGISTRY_PASSWORD" | docker login -u "$CI_REGISTRY_USER" --password-stdin "$CI_REGISTRY"
+  script:
+    - echo "Copying binary into Docker image..."
+    - docker build -t "$DOCKER_IMAGE" .
+    - docker push "$DOCKER_IMAGE"

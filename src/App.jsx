@@ -50,9 +50,7 @@ const App = () => {
         </div>
 
         <br />
-				<form id="cacapipi">
         {taskList}
-				</form>
         <div className="container card">
             <div className="card-body">
                 <button onClick={submit} type="button" className="btn btn-primary">
