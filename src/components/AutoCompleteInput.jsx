@@ -33,7 +33,7 @@ export default function AutoCompleteInput({ id, placeholder, category, onChange,
 
     setIsLoading(true)
 
-    fetch(`http://localhost:8080/api/search?category=${category}_preload&locale=${language}&parentId=${parentId}`)
+    fetch(`/api/search?category=${category}_preload&locale=${language}&parentId=${parentId}`)
       .then(resp => resp.json())
       .then(json => {
         if (json == null) return
@@ -64,7 +64,7 @@ export default function AutoCompleteInput({ id, placeholder, category, onChange,
 
           if (parentId) params.append('parentId', parentId)
 
-          fetch(`http://localhost:8080/api/search?${params.toString()}`)
+          fetch(`/api/search?${params.toString()}`)
             .then(resp => resp.json())
             .then(json => {
               if (json == null) return
