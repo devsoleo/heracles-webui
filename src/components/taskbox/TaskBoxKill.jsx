@@ -7,7 +7,7 @@ export default function TaskBoxKill({ step, type }) {
         <input className="form-control" type="number" id={ step + "-" + type + "-amount" } placeholder="Amount" />
       </div>
       <div className="col">
-        <AutoCompleteInput id={ step + "-" + type + "-creature_id" } category="creature" placeholder="Unit name" />
+        <AutoCompleteInput id={ step + "-" + type + "-creature" } category="creature" placeholder="Unit name" />
       </div>
     </>
   )

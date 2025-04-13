@@ -19,12 +19,12 @@ export default function TaskBoxTarget({ step, type }) {
       <div className="col">
       {
         targetType == "1" && (
-          <AutoCompleteInput id={step + "-" + type + "-creature_id"} category="creature" placeholder="Unit name" />
+          <AutoCompleteInput id={step + "-" + type + "-creature"} category="creature" placeholder="Unit name" />
         )
       }
       {
         targetType == "2" && (
-          <input className="form-control" type="text" id={step + "-" + type + "-player_name"} placeholder="Player name" />
+          <input className="form-control" type="text" id={step + "-" + type + "-player"} placeholder="Player name" />
         )
       }
       {

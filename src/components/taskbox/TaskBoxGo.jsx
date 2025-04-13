@@ -11,11 +11,11 @@ export default function TaskBoxGo({ step, type }) {
   return (
     <>
       <div className="col">
-        <AutoCompleteInput id={ step + "-" + type + "-creature_id" } category="zone" placeholder="Zone" onChange={handleChange} />
+        <AutoCompleteInput id={ step + "-" + type + "-zone" } category="zone" placeholder="Zone" onChange={handleChange} />
       </div>
       <div className="col">
         <AutoCompleteInput
-          id={ step + "-" + type + "-creature_id" }
+          id={ step + "-" + type + "-subzone" }
           key={selectedZone}
           category="subzone"
           preload={true}

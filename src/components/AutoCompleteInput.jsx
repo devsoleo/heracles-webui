@@ -57,6 +57,7 @@ export default function AutoCompleteInput({ id, placeholder, category, onChange,
         selected={value}
         isLoading={isLoading}
         minLength={0}
+        disabled={parentId == ""}
         useCache={false}
         onSearch={(query) => {
           setIsLoading(true)

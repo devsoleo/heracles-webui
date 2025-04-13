@@ -12,11 +12,55 @@ const App = () => {
 			setLanguage(event.target.value)
 		}
 
-    const onAddTaskButtonClick = event => {
+    const onAddTaskButtonClick = () => {
       setTaskList(taskList.concat(<TaskBox key={taskList.length} step={taskList.length} />))
     }
 
-    const submit = event => {
+    const submit = () => {
+			let tasks = []
+			const categories = [
+				"kill",
+				"target",
+				"goto",
+				"minigame"
+			]
+
+			document.querySelectorAll("input[type=number], input[type=text], input[type=hidden], select").forEach((item) => {
+				if (item.id == "") return
+
+				const id = item.id.split("-")
+
+				const step = id[0]
+				const category = id[1]
+
+				if (!tasks[step]) tasks[step] = {}
+
+				tasks[step]["category"] = categories[category]
+
+				if (categories[category] == "target") {
+					tasks[step]["entity"] = id[2]
+					tasks[step]["target"] = item.value
+
+					return
+				}
+
+				tasks[step][id[2]] = item.value
+			})
+
+			console.log(tasks)
+
+			fetch('/api/generate', {
+				method: 'POST',
+				headers: {
+					'Content-Type': 'application/json',
+				},
+				body: JSON.stringify(tasks)
+			}).then(resp => resp.json())
+      .then(json => {
+        if (json == null) return
+
+				navigator.clipboard.writeText(btoa(encodeURIComponent(JSON.stringify(json))))
+      })
     }
 
     return (
