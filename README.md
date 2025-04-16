@@ -1,7 +1,7 @@
 [![React](https://img.shields.io/badge/React-20232a?logo=react&logoColor=61dafb&style=for-the-badge)](https://reactjs.org/)
 [![Vite](https://img.shields.io/badge/Vite-646cff?logo=vite&logoColor=white&style=for-the-badge)](https://vitejs.dev/)
 [![Node.js](https://img.shields.io/badge/Node.js-339933?logo=nodedotjs&logoColor=white&style=for-the-badge)](https://nodejs.org/)
-[![Discord](https://img.shields.io/discord/1070782232219877477?color=7289da&label=Discord&logo=discord&style=for-the-badge)](https://discord.gg/vhs87h6fvD)
+[![Discord](https://img.shields.io/discord/1187474009911206008?color=7289da&label=Discord&logo=discord&style=for-the-badge)](https://discord.gg/vhs87h6fvD)
 
 # Heracles WebUI
 
